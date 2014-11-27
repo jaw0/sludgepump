@@ -1,0 +1,40 @@
+
+
+During what I will claim to have been a fit of demonic possession
+last weekend, my fingers spewed forth new newsfeeding code.
+
+briefly: 
+
+	it is currently CNFS specific, but easily adapted
+	(but it requires arts to be stored in wire format)
+
+	slightly better at shoving articles out than innfeed
+	at roughly equal CPU load, and much lower memory use
+	(or at least my stats suggest such)
+
+	runs as a channel feed, one process per site, with
+	multiple connections to that site.
+
+	it is not documented, nor is the code well commented
+	or even well written
+	
+	I am currently running it on SunOS and NetBSD, feeding
+	inn, cyclone, and diablo sites.
+
+	the code is not portable, and will likely not compile
+	on your system
+
+	if you use it, I do not guarantee that the earth will
+	not open up and swallow your news server into the
+	fiery bowels of Hell. use at your own risk
+
+	if you pester me with questions about it, I will
+	ignore you.
+
+	if you send me patches for bug fixes, I may apply
+	them, or I may ignore you.
+
+
+code is located at:
+	ftp.op.net:/pub/src/INN-stuff/sludgepumper-1.0.tar.gz
+

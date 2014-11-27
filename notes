@@ -1,0 +1,143 @@
+
+/*
+** RAWopenfd -- return a file descriptor ready for reading (or writing)
+**      to the named rawpart at the specified offset.
+**      e.g. "RAWPART1:1024" would open a file descriptor for the
+**      rawpart "RAWPART1" at an offset of 1024.
+*/
+ 
+int
+RAWopenfd(char *n, int flags)
+
+
+/*
+** RAWartnam2rpnam -- Given a "filename" for an article,
+**      e.g. "FOO:1024", return the RAWPART symbolic name, e.g. "FOO",
+**      in a static buffer.
+*/
+ 
+char *
+RAWartnam2rpnam(char *filename)
+
+
+/*
+** RAWartnam2offset -- Given a "filename" for an article,
+**      e.g. "FOO:1024", return the byte offset e.g. 1024
+**      else -1 on error.
+*/
+ 
+RAWPART_OFF_T
+RAWartnam2offset(char *filename)
+
+
+/*
+** RAWartname2cyclenum -- Given a filename for an article, 
+**      e.g. "FOO:1234:55", return the cycle number e.g. 55
+**      else 0 on error.
+*/
+ 
+CYCLENUM_T
+RAWartnam2cyclenum(char *filename)
+
+
+/*
+** RAWgetsharedfdrdwr() -- Intended for use by "innd" only.
+**
+** Given an article "name", return a *shared* file descriptor for that
+** article's RAWPART such that the fd is positioned at the proper place
+** within the RAWPART.  The fd will be read/write.
+** Return the fd on success, -1 on error.
+*/
+ 
+int
+RAWgetsharedfdrdwr(char *name)
+
+
+/*
+** RAWartopen -- Given an article "name", return a *shared* file descriptor
+** for that article's RAWPART such that the fd is positioned at the 
+** start of the article's text (*NOT* the article's RAWARTHEADER, like
+** RAWgetsharedfdrdwr() does).
+**
+** Return the fd on success, -1 on error.
+*/
+ 
+int
+RAWartopen(char *name, char *msgid)
+
+
+
+IHAVE
+   235 article transferred ok
+   335 send article to be transferred.  End with <CR-LF>.<CR-LF>
+   435 article not wanted - do not send it
+   436 transfer failed - try again later
+   437 article rejected - do not try again
+
+CHECK
+        238 no such article found, please send it to me
+        400 not accepting articles
+        431 try sending it again later
+        438 already have it, please don't send it to me
+        480 Transfer permission denied
+        500 Command not understood
+
+TAKETHIS
+        239 article transferred ok
+        400 not accepting articles
+        439 article transfer failed
+        480 Transfer permission denied
+        500 Command not understood
+
+
+
+Ziegler-Nichols
+	Ki = Kd = 0, increase Kp until osc. make note of K and T
+	Kp = .6K, Ki = 2/T, Kd = T/8
+
+	NB: K(s) = Kp + Ki/s + Kd*s
+
+
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 19.5       0.80     0.80                             _select [3]
+ 16.5       1.48     0.68                             _write [4]
+ 13.1       2.02     0.54                             _read [5]
+ 10.0       2.43     0.41        1   410.00  1310.79  _sludgepump__Fv [2]
+  7.1       2.72     0.29                             _gettimeofday [7]
+  4.9       2.92     0.20    17559     0.01     0.03  _nntpstream__FP7ChannelbN21 [6]
+
+
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 17.6       0.28     0.28                             _write [3]
+ 17.0       0.55     0.27                             _select [4]
+ 12.6       0.75     0.20                             _gettimeofday [6]
+  7.5       0.87     0.12        1   120.00   505.68  _sludgepump__Fv [2]
+  7.5       0.99     0.12                             _read [8]
+  3.1       1.04     0.05     8798     0.01     0.01  _strtol [16]
+  2.5       1.08     0.04     7063     0.01     0.03  _nntpstream__FP7ChannelbN21 [5]
+  2.5       1.12     0.04     2569     0.02     0.02  _sendchecks__FP7ChannelP11StreamState [15]
+  1.9       1.15     0.03    24675     0.00     0.00  _time [20]
+
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 25.0       0.44     0.44                             _write [3]
+ 18.2       0.76     0.32                             _select [4]
+  6.8       0.88     0.12                             _gettimeofday [10]
+  6.8       1.00     0.12                             _read [11]
+  4.5       1.08     0.08        1    80.00   478.04  _sludgepump__Fv [2]
+  3.4       1.14     0.06     3130     0.02     0.02  _sendchecks__FP7ChannelP11StreamState [15]
+  2.8       1.19     0.05    14812     0.00     0.00  ___qdivrem [18]
+  2.8       1.24     0.05    10009     0.00     0.00  _strtol [19]
+  2.8       1.29     0.05     6846     0.01     0.02  ___svfscanf [9]
+
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 23.7       1.49     1.49                             _select [3]
+ 16.9       2.55     1.06                             _write [4]
+ 12.4       3.33     0.78                             _read [5]
+  9.9       3.95     0.62        1   620.00  1856.02  _sludgepump__Fv [2]
+  5.3       4.28     0.33                             _gettimeofday [12]
+  3.0       4.47     0.19    22552     0.01     0.02  ___svfscanf [10]
+  2.7       4.64     0.17    10092     0.02     0.02  _sendchecks__FP7ChannelP11StreamState [15]

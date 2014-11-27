@@ -1,0 +1,12 @@
+
+
+
+this code supports an inscrutable number of options, none of which
+are currently documented. the author swears by:
+	...:Tc,Wnmbt:/news/bin/sp -D /news/logs/logs/slop -d 0 -m 6 -i 6 news2.op.net
+
+
+new versions of this code may be found in
+	ftp.op.net:/pub/src/INN-stuff/
+
+
